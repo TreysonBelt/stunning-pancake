@@ -1,0 +1,15 @@
+C:\Users\treys\my-code-dir\stunning-pancake\bin\Debug\net6.0\stunning-pancake.exe
+C:\Users\treys\my-code-dir\stunning-pancake\bin\Debug\net6.0\stunning-pancake.deps.json
+C:\Users\treys\my-code-dir\stunning-pancake\bin\Debug\net6.0\stunning-pancake.runtimeconfig.json
+C:\Users\treys\my-code-dir\stunning-pancake\bin\Debug\net6.0\stunning-pancake.dll
+C:\Users\treys\my-code-dir\stunning-pancake\bin\Debug\net6.0\stunning-pancake.pdb
+C:\Users\treys\my-code-dir\stunning-pancake\obj\Debug\net6.0\stunning-pancake.csproj.AssemblyReference.cache
+C:\Users\treys\my-code-dir\stunning-pancake\obj\Debug\net6.0\stunning-pancake.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\treys\my-code-dir\stunning-pancake\obj\Debug\net6.0\stunning-pancake.AssemblyInfoInputs.cache
+C:\Users\treys\my-code-dir\stunning-pancake\obj\Debug\net6.0\stunning-pancake.AssemblyInfo.cs
+C:\Users\treys\my-code-dir\stunning-pancake\obj\Debug\net6.0\stunning-pancake.csproj.CoreCompileInputs.cache
+C:\Users\treys\my-code-dir\stunning-pancake\obj\Debug\net6.0\stunning-pancake.dll
+C:\Users\treys\my-code-dir\stunning-pancake\obj\Debug\net6.0\refint\stunning-pancake.dll
+C:\Users\treys\my-code-dir\stunning-pancake\obj\Debug\net6.0\stunning-pancake.pdb
+C:\Users\treys\my-code-dir\stunning-pancake\obj\Debug\net6.0\stunning-pancake.genruntimeconfig.cache
+C:\Users\treys\my-code-dir\stunning-pancake\obj\Debug\net6.0\ref\stunning-pancake.dll
