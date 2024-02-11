@@ -8,46 +8,31 @@ namespace StunningPancake
         public static void Main()
         {
             Console.Clear();
-            System.Console.Write("please insert x1: ");
-            int x1 = Convert.ToInt32(Console.ReadLine());
-            System.Console.Write("please insert y1: ");
-            int y1 = Convert.ToInt32(Console.ReadLine());
-            System.Console.Write("please insert x2: ");
-            int x2 = Convert.ToInt32(Console.ReadLine());
-            System.Console.Write("please insert y2: ");
-            int y2 = Convert.ToInt32(Console.ReadLine());
-            Coordinate coordinate1 = new Coordinate(x1, y1);
-            Coordinate coordinate2 = new Coordinate(x2, y2);
-            bool check = coordinate1.Check(coordinate2);
+            Sword basicSword = new Sword(Materials.iron, Gemstones.none, 5, 2);
+            Sword variationSword1 = basicSword with {gem = Gemstones.amber};
+            Sword variationSword2 = basicSword with {material = Materials.binarium, gem = Gemstones.bitstone, length = 1000};
+            System.Console.WriteLine(basicSword);
+            System.Console.WriteLine(variationSword1);
+            System.Console.WriteLine(variationSword2);
         }
         
     }
-    public struct Coordinate
+    public enum Materials
     {
-        public readonly int x;
-        public readonly int y;
-        public Coordinate(int X, int Y)
-        {
-            x = X;
-            y = Y;
-        }
-        public bool Check(Coordinate coordinate)
-        {
-            bool check = false;
-            if (coordinate.x == x && coordinate.y == y)
-            {
-                System.Console.WriteLine($"The coordinates are the same.");
-            }
-            else if ((coordinate.x == x && coordinate.y == (y + 1)) || (coordinate.x == x && coordinate.y == (y - 1)) || (coordinate.x == (x + 1) && coordinate.y == y) || (coordinate.x == (x - 1) && coordinate.y == y))
-            {
-                System.Console.WriteLine("The coordinates are adjacent.");
-                check = true;
-            }
-            else
-            {
-                System.Console.WriteLine("The coordinates are not adjacent nor the same.");
-            }
-            return check;
-        }
+        wood,
+        bronze,
+        iron,
+        steel,
+        binarium
     }
+    public enum Gemstones
+    {
+        emerald,
+        amber,
+        sapphire,
+        diamond,
+        bitstone,
+        none
+    }
+    public record Sword (Materials material, Gemstones gem, int length, int crossguard);
 }
