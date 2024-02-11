@@ -1,41 +1,53 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.Clear();
-Console.ResetColor();
+﻿using System.Drawing;
+using StunningPancake;
 
-int[] num = new int[6]{
-    4, 3, 2, 1, 5, 6
-};
-int repetition = 1;
-int i;
-for(i = 0; i < num.Length; i++){
-    Console.ResetColor();
-    if (repetition == 1)
-        if (num[i] % 2 == 0){
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write(num[i]);
+namespace StunningPancake
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Console.Clear();
+            System.Console.Write("please insert x1: ");
+            int x1 = Convert.ToInt32(Console.ReadLine());
+            System.Console.Write("please insert y1: ");
+            int y1 = Convert.ToInt32(Console.ReadLine());
+            System.Console.Write("please insert x2: ");
+            int x2 = Convert.ToInt32(Console.ReadLine());
+            System.Console.Write("please insert y2: ");
+            int y2 = Convert.ToInt32(Console.ReadLine());
+            Coordinate coordinate1 = new Coordinate(x1, y1);
+            Coordinate coordinate2 = new Coordinate(x2, y2);
+            bool check = coordinate1.Check(coordinate2);
         }
-        else{
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(num[i]);
-        }
-    else{
-                if (num[i] % 2 == 0){
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(num[i]);
-        }
-        else{
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(num[i]);
-        }
-        repetition = 0;
+        
     }
-    repetition ++;
-}
-var j = false;
-while (j == false){
-    Console.WriteLine("lol");
-    string blah = Console.ReadLine("");
-    if (blah == "d"){
-        break;
+    public struct Coordinate
+    {
+        public readonly int x;
+        public readonly int y;
+        public Coordinate(int X, int Y)
+        {
+            x = X;
+            y = Y;
+        }
+        public bool Check(Coordinate coordinate)
+        {
+            bool check = false;
+            if (coordinate.x == x && coordinate.y == y)
+            {
+                System.Console.WriteLine($"The coordinates are the same.");
+            }
+            else if ((coordinate.x == x && coordinate.y == (y + 1)) || (coordinate.x == x && coordinate.y == (y - 1)) || (coordinate.x == (x + 1) && coordinate.y == y) || (coordinate.x == (x - 1) && coordinate.y == y))
+            {
+                System.Console.WriteLine("The coordinates are adjacent.");
+                check = true;
+            }
+            else
+            {
+                System.Console.WriteLine("The coordinates are not adjacent nor the same.");
+            }
+            return check;
+        }
     }
 }
