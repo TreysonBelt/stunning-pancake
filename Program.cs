@@ -8,31 +8,70 @@ namespace StunningPancake
         public static void Main()
         {
             Console.Clear();
-            Sword basicSword = new Sword(Materials.iron, Gemstones.none, 5, 2);
-            Sword variationSword1 = basicSword with {gem = Gemstones.amber};
-            Sword variationSword2 = basicSword with {material = Materials.binarium, gem = Gemstones.bitstone, length = 1000};
-            System.Console.WriteLine(basicSword);
-            System.Console.WriteLine(variationSword1);
-            System.Console.WriteLine(variationSword2);
+            Shape shape = new Shape();
+            int l = 3;
+            int w = 4;
+            Rectangle rectangle = new Rectangle(l, w);
+            shape.Display();
+            rectangle.Display();
         }
         
     }
-    public enum Materials
+    class Shape
     {
-        wood,
-        bronze,
-        iron,
-        steel,
-        binarium
+        public string name { get; set; }
+        public int area { get; protected set; }
+        public int perimeter { get; protected set; }
+
+        public Shape()
+        {
+            name = "Faux Rectangle";
+        }
+
+        public void Display()
+        {
+            int a = CalculateArea();
+            int p = CalculatePerimeter();
+            System.Console.WriteLine($"Name: {name} Area: {a} Perimeter: {p}");
+        }
+
+        public virtual int CalculateArea()
+        {
+            // Provide implementation in derived classes
+            return 0;
+        }
+
+        public virtual int CalculatePerimeter()
+        {
+            // Provide implementation in derived classes
+            return 0;
+        }
     }
-    public enum Gemstones
+
+    class Rectangle : Shape
     {
-        emerald,
-        amber,
-        sapphire,
-        diamond,
-        bitstone,
-        none
+        public int length { get; set; }
+        public int width { get; set; }
+
+        public Rectangle(int Length, int Width)
+        {
+            name = "Rectangle";
+            length = Length;
+            width = Width;
+            CalculateArea();
+            CalculatePerimeter();
+        }
+
+        public override int CalculateArea()
+        {
+            area = length * width;
+            return area;
+        }
+
+        public override int CalculatePerimeter()
+        {
+            perimeter = 2 * length + 2 * width;
+            return perimeter;
+        }
     }
-    public record Sword (Materials material, Gemstones gem, int length, int crossguard);
 }
