@@ -1,110 +1,57 @@
-﻿using System.Drawing;
-using StunningPancake;
-
-namespace StunningPancake
+﻿namespace StunningPancake
 {
     public class Program
     {
         public static void Main()
         {
             Console.Clear();
-            Robot robot = new Robot();
-            for (int i = 0; i < robot.Commands.Length; i++)
+            Sword sword = new Sword();
+            ConsoleColor color = ConsoleColor.Blue;
+            ColoredItem<Sword, ConsoleColor> coloredItem = new ColoredItem<Sword, ConsoleColor>(sword, color);
+            coloredItem.Display();
+            Bow bow = new Bow();
+            ConsoleColor color1 = ConsoleColor.Red;
+            ColoredItem<Bow, ConsoleColor> coloredItem1 = new ColoredItem<Bow, ConsoleColor>(bow, color1);
+            coloredItem1.Display();
+            Axe axe = new Axe();
+            ConsoleColor color2 = ConsoleColor.Green;
+            ColoredItem<Axe, ConsoleColor> coloredItem2 = new ColoredItem<Axe, ConsoleColor>(axe, color2);
+            coloredItem2.Display();
+        }
+    }
+
+    public class Sword { }
+    public class Bow { }
+    public class Axe { }
+
+    class ColoredItem<Tfirst, Tseccond>
+    {
+        public Tfirst item { get; set; }
+        public Tseccond color { get; }
+        public ColoredItem(Tfirst Item, Tseccond Color)
+        {
+            item = Item;
+            color = Color;
+        }
+        public void Display()
+        {
+            switch (color)
             {
-                string input1 = Console.ReadLine();
-                if (input1 == "on")
-                {
-                    OnCommand onCommand = new OnCommand();
-                    robot.Commands[i] = onCommand;
-                }
-                else if (input1 == "off")
-                {
-                    OffCommand offCommand = new OffCommand();
-                    robot.Commands[i] = offCommand;
-                }
-                else if (input1 == "north")
-                {
-                    NorthCommand northCommand = new NorthCommand();
-                    robot.Commands[i] = northCommand;
-                }
-                else if (input1 == "south")
-                {
-                    SouthCommand southCommand = new SouthCommand();
-                    robot.Commands[i] = southCommand;
-                }
-                else if (input1 == "west")
-                {
-                    WestCommand westCommand = new WestCommand();
-                    robot.Commands[i] = westCommand;
-                }
-                else if (input1 == "east")
-                {
-                    EastCommand eastCommand = new EastCommand();
-                    robot.Commands[i] = eastCommand;
-                }
+                case ConsoleColor.Blue:
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    break;
+                case ConsoleColor.Red:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+                case ConsoleColor.Green:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    break;
+                default:
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
             }
-                robot.Run();
-        }
-    }
-    public class Robot
-    {
-        public int X { get; set; }
-        public int Y { get; set; }
-        public bool IsPowered { get; set; }
-        public IRobotCommand?[] Commands { get; } = new IRobotCommand?[3];
-        public void Run()
-        {
-            foreach (IRobotCommand? command in Commands)
-            {
-            command?.Run(this);
-            Console.WriteLine($"[{X} {Y} {IsPowered}]");
-            }
-        }
-    }
-    public interface IRobotCommand
-    {
-        void Run(Robot robot);
-    }
-    public class OnCommand : IRobotCommand
-    {
-        public void Run(Robot robot)
-        {
-            robot.IsPowered = true;
-        }
-    }
-    public class OffCommand : IRobotCommand
-    {
-        public void Run(Robot robot)
-        {
-            robot.IsPowered = false;
-        }
-    }
-    public class NorthCommand : IRobotCommand
-    {
-        public void Run(Robot robot)
-        {
-            robot.Y = robot.Y + 1;
-        }
-    }
-    public class SouthCommand : IRobotCommand
-    {
-        public void Run(Robot robot)
-        {
-            robot.Y = robot.Y - 1;
-        }
-    }
-    public class EastCommand : IRobotCommand
-    {
-        public void Run(Robot robot)
-        {
-            robot.X = robot.X + 1;
-        }
-    }
-    public class WestCommand : IRobotCommand
-    {
-        public void Run(Robot robot)
-        {
-            robot.X = robot.X - 1;
+            System.Console.WriteLine(item);
+            Console.ResetColor(); // Reset color to default
         }
     }
 
