@@ -1,0 +1,6 @@
+namespace StunningPancake
+{
+    class PlayClass
+    {
+    }
+}
